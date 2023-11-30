@@ -1,0 +1,11 @@
+{
+    "type": "mongodb",
+    "host": "localhost",
+    "port": 27017,
+    "database": "university-management-system",
+    "useUnifiedTopology": true,
+    "entities": ["src/**/*.entity{.ts,.js}"],
+    "synchronize": true,
+    "logging": true
+}
+  

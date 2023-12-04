@@ -1,51 +1,33 @@
 import mongoose from 'mongoose';
-import Student from './entities/Student';
+import express, { Request, Response } from 'express';
+import bodyParser from 'body-parser';
+import courseRouter from './routes/courseRoutes';
 
-// Establish MongoDB connection
-async function connectToDatabase() {
-  try {
-    await mongoose.connect('mongodb://localhost:27017/tsPractice');
-    console.log('Connected to MongoDB');
-  } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
-  }
-}
+const app = express();
+const PORT = 3000;
 
-async function testCRUDOperations() {
-  try {
-    // Create
-    const newStudent = new Student({
-      name: 'John Doe',
-      age: 20,
-      studentId: '12345',
-    });
-    await newStudent.save();
+app.use(bodyParser.json());
 
-    // Read
-    const foundStudent = await Student.findOne({ name: 'John Doe' });
-    console.log('Found student:', foundStudent);
 
-    // Update
-    if (foundStudent) {
-      foundStudent.age = 21;
-      await foundStudent.save();
-    }
+app.use('/api/courses', courseRouter);
 
-    // Delete
-    if (foundStudent) {
-        // Student found, proceed with deletion
-        const deletedStudent = await foundStudent.deleteOne();
-        console.log('Deleted student:', deletedStudent);
-    } else {
-        // Student not found, handle accordingly
-        console.error('Student not found');
-    }
-  } catch (error) {
-    console.error('Error performing CRUD operations:', error);
-  }
-}
 
-// Connect to the database and perform CRUD operations
-connectToDatabase().then(() => {
-  testCRUDOperations().finally(() => mongoose.disconnect());
+// Routes
+app.get('/', (req: Request, res: Response) => {
+  res.send('Express server running');
 });
+
+
+const start = async () => {
+  try {
+    await mongoose.connect(
+      "mongodb://localhost:27017/tsPractice"
+    );
+    app.listen(3000, () => console.log("Server started on port 3000"));
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+};
+
+start();

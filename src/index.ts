@@ -17,14 +17,21 @@ app.use('/api/courses', courseRouter);
 
 const start = async () => {
   try {
-    await mongoose.connect(
-      "mongodb://localhost:27017/tsPractice"
-    );
+    await mongoose.connect("mongodb://localhost:27017/tsPractice");
+    console.log('Connected to MongoDB');
+
     app.listen(PORT, () => console.log(`Server started on ${PORT}`));
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error('Error starting the server:', error);
+
+    // specific MongoDB connection error
+    if (error.name === 'MongoError') {
+      console.error('MongoDB Connection Error:', error.message);
+    }
+
     process.exit(1);
   }
 };
+
 
 start();

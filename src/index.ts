@@ -2,6 +2,9 @@ import mongoose from 'mongoose';
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import courseRouter from './routes/courseRoutes';
+import instructorRouter from './routes/instructorRoutes';
+import studentRouter from './routes/studentRoutes';
+import universityRouter from './routes/universityRoutes';
 
 const app = express();
 const PORT = 3000;
@@ -17,6 +20,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Express server running');
 });
 
+app.use('/api/courses', courseRouter);
+app.use('/api/instructors', instructorRouter);
+app.use('/api/students', studentRouter);
+app.use('/api/university', universityRouter);
 
 const start = async () => {
   try {

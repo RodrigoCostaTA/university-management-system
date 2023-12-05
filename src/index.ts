@@ -1,29 +1,26 @@
 import mongoose from 'mongoose';
-import express, { Request, Response } from 'express';
+import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import courseRouter from './routes/courseRoutes';
 
-const app = express();
-const PORT = 3000;
+const app: Application = express();
+const PORT: number = 3000;
 
 app.use(bodyParser.json());
-
-
-app.use('/api/courses', courseRouter);
-
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
   res.send('Express server running');
 });
 
+app.use('/api/courses', courseRouter);
 
 const start = async () => {
   try {
     await mongoose.connect(
       "mongodb://localhost:27017/tsPractice"
     );
-    app.listen(3000, () => console.log("Server started on port 3000"));
+    app.listen(PORT, () => console.log(`Server started on ${PORT}`));
   } catch (error) {
     console.error(error);
     process.exit(1);

@@ -27,12 +27,13 @@ class InstructorController {
   }
 
   async createInstructor(req: Request, res: Response) {
-    const { name, email, courses } = req.body;
+    const { name, email, courses, instructorId } = req.body;
 
     const newInstructor = new Instructor({
       name,
       email,
-      courses
+      courses,
+      instructorId,
     });
 
     try {
@@ -45,17 +46,17 @@ class InstructorController {
 
   async updateInstructor(req: Request, res: Response) {
     const instructorId = req.params.id;
-    const { name, email, course } = req.body;
+    const { name, email, courses, instructorId: newInstructorId } = req.body;
 
     try {
-      const updatedCourse = await Instructor.findByIdAndUpdate(
+      const updatedInstructor = await Instructor.findByIdAndUpdate(
         instructorId,
-        { name, email, course },
+        { name, email, courses, instructorId: newInstructorId },
         { new: true }
       );
 
-      if (updatedCourse) {
-        res.json(updatedCourse);
+      if (updatedInstructor) {
+        res.json(updatedInstructor);
       } else {
         res.status(404).json({ message: 'Instructor not found' });
       }

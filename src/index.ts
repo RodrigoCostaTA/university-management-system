@@ -5,6 +5,7 @@ import courseRouter from './routes/courseRoutes';
 import instructorRouter from './routes/instructorRoutes';
 import studentRouter from './routes/studentRoutes';
 import universityRouter from './routes/universityRoutes';
+import enrollmentRouter from './routes/enrollmentRoutes';
 
 const app: Application = express();
 const PORT: number = 3000;
@@ -20,6 +21,7 @@ app.use('/api/courses', courseRouter);
 app.use('/api/instructors', instructorRouter);
 app.use('/api/students', studentRouter);
 app.use('/api/university', universityRouter);
+app.use('/api/enrollments', enrollmentRouter);
 
 const start = async () => {
   try {

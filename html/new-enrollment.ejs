@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Enrollment</title>
+</head>
+
+<body>
+  <h1>New Enrollment</h1>
+
+  <form action="/api/enrollments" method="post">
+    <label for="studentId">Select Student:</label>
+    <select id="studentId" name="studentId">
+      <% students.forEach(student => { %>
+        <option value="<%= student._id %>"><%= student.name %></option>
+      <% }); %>
+    </select>
+
+    <br>
+
+    <label for="courseId">Select Course:</label>
+    <select id="courseId" name="courseId">
+      <% courses.forEach(course => { %>
+        <option value="<%= course._id %>"><%= course.title %></option>
+      <% }); %>
+    </select>
+    <button type="submit">Enroll</button>
+  </form>
+</body>
+
+</html>

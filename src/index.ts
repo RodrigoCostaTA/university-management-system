@@ -1,22 +1,31 @@
+// index.ts
 import mongoose from 'mongoose';
 import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
+import path from 'path'; // Import the 'path' module
 import courseRouter from './routes/courseRoutes';
 import instructorRouter from './routes/instructorRoutes';
 import studentRouter from './routes/studentRoutes';
 import universityRouter from './routes/universityRoutes';
 import enrollmentRouter from './routes/enrollmentRoutes';
 import departmentRouter from './routes/departmentRoutes';
+import router from './routes/routes';
 
 const app: Application = express();
 const PORT: number = 3000;
 
 app.use(bodyParser.json());
 
+// Set the view engine to EJS and the views directory
+app.set('view engine', 'ejs');
+app.set('views', 'html');
+
 // Routes
 app.get('/', (req: Request, res: Response) => {
   res.send('Express server running');
 });
+
+app.use('/', router)
 
 app.use('/api/courses', courseRouter);
 app.use('/api/instructors', instructorRouter);
@@ -42,6 +51,5 @@ const start = async () => {
     process.exit(1);
   }
 };
-
 
 start();

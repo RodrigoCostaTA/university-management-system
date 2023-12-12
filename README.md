@@ -18,37 +18,50 @@ This project is a University Management System. It utilizes Node.js and TypeScri
 
 ## Dependencies
 
-### [express](https://www.npmjs.com/package/express)
-- Used to build the web server and handle HTTP requests and responses.
+This project uses the following dependencies:
 
-### [mongoose](https://www.npmjs.com/package/mongoose)
-- Used for MongoDB database interaction, defining schemas, and performing CRUD operations.
+- **body-parser:** v1.20.2
+  - Parse incoming request bodies in a middleware before your handlers.
 
-### [body-parser](https://www.npmjs.com/package/body-parser)
-- Used to parse JSON and url-encoded data from HTTP requests.
+- **dotenv:** v16.3.1
+  - Load environment variables from a .env file for development.
 
-### [mongodb](https://www.npmjs.com/package/mongodb)
-- Required by Mongoose for low-level MongoDB operations.
+- **ejs:** v3.1.9
+  - Embedded JavaScript templates for rendering HTML pages.
 
-### [ts-node](https://www.npmjs.com/package/ts-node)
-- Used to directly run TypeScript files without the need for a separate compilation step.
+- **express:** v4.18.2
+  - Web application framework for Node.js to build robust APIs and web applications.
 
-### [typescript](https://www.npmjs.com/package/typescript)
-- Used to enable static typing, improve code maintainability, and catch potential errors during development.
+- **express-basic-auth:** v1.2.1
+  - Provides basic authentication middleware for Express.
 
-## Dev Dependencies
+- **mongodb:** v6.3.0
+  - MongoDB Node.js driver for interacting with the MongoDB database.
 
-### [@types/express](https://www.npmjs.com/package/@types/express)
-- Provides TypeScript with type definitions for Express to enhance code development.
+- **mongoose:** v8.0.2
+  - Elegant MongoDB object modeling tool for Node.js.
 
-### [@types/mongoose](https://www.npmjs.com/package/@types/mongoose)
-- Provides TypeScript with type definitions for Mongoose to enhance code development.
+- **ts-node:** v10.9.1
+  - TypeScript execution and REPL for Node.js, enabling direct execution of .ts files.
 
-### [@types/node](https://www.npmjs.com/package/@types/node)
-- Provides TypeScript with type definitions for Node.js core modules.
+- **typescript:** v5.3.2
+  - Superset of JavaScript that adds static types and other features to the language.
 
-### [ts-node-dev](https://www.npmjs.com/package/ts-node-dev)
-- Similar to `nodemon` but optimized for TypeScript projects.
+## Development Dependencies
+
+- **@types/express:** v4.17.21
+  - TypeScript type definitions for Express.
+
+- **@types/mongoose:** v5.11.97
+  - TypeScript type definitions for Mongoose.
+
+- **@types/node:** v20.10.3
+  - TypeScript type definitions for Node.js.
+
+- **ts-node-dev:** v2.0.0
+  - Dev tool that reloads your TypeScript app when files are changed.
+
+
 
 ## Getting Started
 

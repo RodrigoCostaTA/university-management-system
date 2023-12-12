@@ -44,7 +44,6 @@ class StudentController {
       const savedStudent = await newStudent.save();
       res.json(savedStudent);
     } catch (error: any) {
-      console.error(error);
   
       if (error instanceof mongoose.Error.ValidationError) {
         const validationErrors = Object.values(error.errors).map((err: any) => err.message);

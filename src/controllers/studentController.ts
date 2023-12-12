@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import mongoose from 'mongoose';
 import Student from '../entities/Student';
 
 class StudentController {
@@ -28,17 +29,28 @@ class StudentController {
 
   async createStudent(req: Request, res: Response) {
     const { name, age, studentId } = req.body;
-
+  
+    if (!name || !age || !studentId) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+  
     const newStudent = new Student({
       name,
       age,
-      studentId
+      studentId,
     });
-
+  
     try {
       const savedStudent = await newStudent.save();
       res.json(savedStudent);
-    } catch (error) {
+    } catch (error: any) {
+      console.error(error);
+  
+      if (error instanceof mongoose.Error.ValidationError) {
+        const validationErrors = Object.values(error.errors).map((err: any) => err.message);
+        return res.status(400).json({ message: 'Validation Error', errors: validationErrors });
+      }
+  
       res.status(500).json({ message: 'Internal Server Error' });
     }
   }

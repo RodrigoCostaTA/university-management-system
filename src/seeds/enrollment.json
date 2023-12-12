@@ -1,0 +1,12 @@
+[
+    {
+      "student": "A12345",
+      "course": "CSE101",
+      "enrollmentDate": "2023-01-01T00:00:00Z"
+    },
+    {
+      "student": "B56789",
+      "course": "ENG201",
+      "enrollmentDate": "2023-01-02T00:00:00Z"
+    }
+]

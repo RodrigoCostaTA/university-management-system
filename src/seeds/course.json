@@ -1,0 +1,12 @@
+[
+    {
+      "code": "CSE101",
+      "title": "Introduction to Computer Science",
+      "credits": 3
+    },
+    {
+      "code": "ENG201",
+      "title": "English Literature",
+      "credits": 4
+    }
+  ]  

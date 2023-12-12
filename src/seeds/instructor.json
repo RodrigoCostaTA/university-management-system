@@ -1,0 +1,14 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "courses": [],
+        "instructorId": "I01"
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "courses": [],
+        "instructorId": "I02"
+    }
+]

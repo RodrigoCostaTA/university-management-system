@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Alice Johnson",
+      "age": 20,
+      "studentId": "A12345"
+    },
+    {
+      "name": "Bob Miller",
+      "age": 22,
+      "studentId": "B56789"
+    },
+    {
+        "name": "Carl Miller",
+        "age": 24,
+        "studentId": "C10787"
+    }
+]

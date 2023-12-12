@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import Enrollment from '../entities/Enrollment';
+import Course from '../entities/Course';
 
 class EnrollmentController {
   async getAllEnrollments(req: Request, res: Response) {
@@ -28,16 +29,30 @@ class EnrollmentController {
 
   async createEnrollment(req: Request, res: Response) {
     const { studentId, courseId } = req.body;
-
+  
+    // Ensure both studentId and courseId are provided
+    if (!studentId || !courseId) {
+      return res.status(400).json({ message: 'Both studentId and courseId are required' });
+    }
+  
     const newEnrollment = new Enrollment({
       student: studentId,
       course: courseId,
     });
-
+  
     try {
       const savedEnrollment = await newEnrollment.save();
+
+      // Update the Course model's students array
+      const course = await Course.findByIdAndUpdate(
+        courseId,
+        { $push: { students: studentId } },
+        { new: true }
+      );
+      
       res.json(savedEnrollment);
     } catch (error) {
+      console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
     }
   }

@@ -1,7 +1,10 @@
 import express from 'express';
 import universityController from '../controllers/universityController';
+import basicAuthMiddleware from '../middlewares/basicAuthMiddleware';
 
 const router = express.Router();
+
+router.use(basicAuthMiddleware);
 
 router.get('/', universityController.getAllUniversities);
 router.get('/:id', universityController.getUniversityById);

@@ -1,7 +1,10 @@
 import express from 'express';
 import courseController from '../controllers/courseController';
+import basicAuthMiddleware from '../middlewares/basicAuthMiddleware';
 
 const router = express.Router();
+
+router.use(basicAuthMiddleware);
 
 router.get('/', courseController.getAllCourses);
 router.get('/:id', courseController.getCourseById);

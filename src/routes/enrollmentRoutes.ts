@@ -1,7 +1,10 @@
 import express from 'express';
 import enrollmentController from '../controllers/enrollmentController';
+import basicAuthMiddleware from '../middlewares/basicAuthMiddleware';
 
 const router = express.Router();
+
+router.use(basicAuthMiddleware);
 
 router.get('/', enrollmentController.getAllEnrollments);
 router.get('/:id', enrollmentController.getEnrollmentById);

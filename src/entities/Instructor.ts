@@ -4,7 +4,7 @@ interface IInstructor extends Document {
   name: string;
   email: string;
   courses: Types.ObjectId[];
-  instructorId: string,
+  instructorId: string;
 }
 
 const instructorSchema = new Schema<IInstructor>({
